@@ -1,0 +1,823 @@
+\documentclass[10pt, twocolumn]{article}
+
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{xcolor}
+
+% --- Custom Colors ---
+\definecolor{myblue}{RGB}{0, 160, 220}
+\definecolor{sectioncyan}{RGB}{0, 160, 220}
+
+% --- Custom Commands & List Styles ---
+\setlist[enumerate]{leftmargin=*}
+\setlist[itemize]{leftmargin=*}
+
+\begin{document}
+
+% ==========================================
+% SECTION 1.1: SAMPLE SPACES & PROBABILITIES
+% ==========================================
+
+\begin{description}[font=\bfseries, labelindent=0pt, leftmargin=3.5em]
+    \item[1.1.1] What is the sample space when a coin is tossed three times?
+    
+    \item[1.1.2] What is the sample space for counting the number of females in a group of $n$ people?
+    
+    \item[1.1.3] What is the sample space for the number of aces in a hand of 13 playing cards?
+    
+    \item[1.1.4] What is the sample space for a person's birthday?
+    
+    \item[1.1.5] A car repair is performed either on time or late and either satisfactorily or unsatisfactorily. What is the sample space for a car repair?
+    
+    \item[1.1.6] A bag contains balls that are either red or blue and either dull or shiny. What is the sample space when a ball is chosen from the bag?
+    
+    \item[1.1.7] A probability value $p$ is often reported as an \textit{odds ratio}.
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item If the odds ratio is 1, what is $p$?
+        \item If the odds ratio is 2, what is $p$?
+        \item If $p = 0.25$, what is the odds ratio?
+    \end{enumerate}
+    
+    \item[1.1.8] An experiment has five outcomes, I, II, III, IV, and V. If $P(\text{I}) = 0.13$, $P(\text{II}) = 0.24$, $P(\text{III}) = 0.07$, and $P(\text{IV}) = 0.38$, what is $P(\text{V})$?
+    
+    \item[1.1.9] An experiment has five outcomes, I, II, III, IV, and V. If $P(\text{I}) = 0.08$, $P(\text{II}) = 0.20$, and $P(\text{III}) = 0.33$, what are the possible values for the probability of outcome V? If outcomes IV and V are equally likely, what are their probability values?
+    
+    \item[1.1.10] An experiment has three outcomes, I, II, and III. If outcome I is twice as likely as outcome II, and outcome II is three times as likely as outcome III, what are the probability values of the three outcomes?
+\end{description}
+
+\vspace{1em}
+\noindent\textbf{14} \hfill {\color{myblue}\small\textbf{CHAPTER 1 \quad PROBABILITY THEORY}}
+\vspace{1em}
+
+% ==========================================
+% SECTION 1.2: DISCRETE PROBABILITY MODELS
+% ==========================================
+
+{\color{myblue}\rule{\linewidth}{1.5pt}}
+\subsection*{1.2.3 \quad Problems}
+
+\begin{enumerate}[label=\textbf{1.2.\arabic*}]
+
+    \item Consider a sample space $S = \{a, b, c, d, e\}$ with outcome probabilities shown in a discrete distribution model where $P(a) = 0.13$, $P(c) = 0.48$, $P(d) = 0.02$, and $P(e) = 0.22$. Event $A$ consists of outcomes $\{c, d\}$. Calculate:
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item $P(b)$
+        \item $P(A)$
+        \item $P(A')$
+    \end{enumerate}
+
+    \item Consider a sample space $S = \{a, b, c, d, e, f\}$ where event $A = \{b, c, e\}$. Given that $P(A) = 0.27$, $P(a) = 0.09$, $P(c) = 0.11$, $P(e) = 0.06$, and $P(f) = 0.29$, calculate:
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item $P(b)$
+        \item $P(A')$
+        \item $P(d)$
+    \end{enumerate}
+
+    \item Assuming that a birthday is equally likely to occur on any day of a standard $365$-day year, determine the probability that a randomly chosen individual was born in January. What is the corresponding probability for February?
+
+    \item A company implements initiatives to minimize its carbon footprint. Operational costs will either increase, remain constant, or decrease. Suppose the probability that costs increase is $0.03$ and the probability that costs remain constant is $0.18$. What is the probability that costs will decrease?
+
+    \item The joint behavior of two company stocks (Company A and Company B) is analyzed over a given period:
+    \begin{itemize}
+        \item $P(\text{both stocks increase}) = 0.38$
+        \item $P(\text{both stocks decrease}) = 0.11$
+        \item $P(\text{Company A decreases and Company B increases}) = 0.16$
+    \end{itemize}
+    What is the probability that Company A increases while Company B decreases? What is the probability that at least one company experiences an increase in stock price?
+
+    \item Two fair six-sided dice (one red and one blue) are rolled simultaneously. 
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item What is the probability that the outcome on the red die is strictly greater than the outcome on the blue die?
+        \item Why is this probability strictly less than $0.5$?
+        \item Describe the complement of this event.
+    \end{enumerate}
+
+    \item A card is drawn at random from a standard $52$-card deck. What is the probability that the drawn card belongs to one of the two black suits?
+
+    \item A card is selected at random from a standard $52$-card deck. What is the probability that it is an Ace?
+
+    \item A winner and a runner-up are determined in a tournament consisting of four players, one of whom is Terica. Assuming all outcome pairings are equally likely, calculate:
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item The probability that Terica is the winner.
+        \item The probability that Terica finishes as either the winner or the runner-up.
+    \end{enumerate}
+
+    \item Three battery types (Type I, Type II, and Type III) undergo performance testing. An outcome $(X, Y, Z)$ represents the failure order, where $X$ fails first, $Y$ fails second, and $Z$ lasts the longest. The sample space probabilities are given below:
+    \begin{align*}
+        P(\text{I, II, III}) &= 0.11, & P(\text{I, III, II}) &= 0.07 \\
+        P(\text{II, I, III}) &= 0.24, & P(\text{II, III, I}) &= 0.39 \\
+        P(\text{III, I, II}) &= 0.09, & P(\text{III, II, I}) &= 0.10
+    \end{align*}
+    Calculate the probability that:
+    \begin{enumerate}[label=\textbf{(\alph*)}]
+        \item Type I battery lasts the longest.
+        \item Type I battery fails first.
+        \item Type I battery does not last the longest.
+        \item Type I battery lasts longer than Type II battery.
+    \end{enumerate}
+
+\end{enumerate}
+
+\noindent\hfill \textbf{\textcolor{sectioncyan}{1.3 \quad COMBINATIONS OF EVENTS}} \quad \textbf{15}
+
+\vspace{1em}
+
+\begin{enumerate}[label=\textbf{(\alph*)}, start=3]
+    \item at least one assembly line is at full capacity?
+    \item exactly one assembly line is at full capacity?
+\end{enumerate}
+
+\noindent What is the complement of the event in part (b)? What is the complement of the event in part (c)?\\
+\textit{(This problem is continued in Problem 1.4.10.)}
+
+\vspace{1em}
+
+\begin{center}
+    \textbf{\textcolor{sectioncyan}{FIGURE 1.25}}\\[0.2em]
+    \textcolor{sectioncyan}{\small Probability values for assembly line operations}
+\end{center}
+
+\begin{description}[font=\bfseries, labelindent=0pt, leftmargin=3.5em]
+    \item[1.2.11] A factory has two assembly lines, each of which is \textit{shut down} ($S$), at \textit{partial capacity} ($P$), or at \textit{full capacity} ($F$). The sample space is given in Figure 1.25, where, for example, $(S, P)$ denotes that the first assembly line is shut down and the second one is operating at partial...
+    
+    \item[1.2.12] A fair coin is tossed three times. What is the probability that two heads will be obtained \textit{in succession}?
+    
+    \item[1.2.13] A company's revenue is considerably below expectation with probability $0.08$, is slightly below expectation with probability $0.19$, exactly meets expectation with probability $0.26$, is slightly above expectation with probability $0.36$, and is considerably above expectation with probability $0.11$. What is the probability that the company's revenue is not below expectation?
+    
+    \item[1.2.14] An advertising campaign is canceled before launch with probability $0.10$, is launched but canceled early with probability $0.18$, is launched and runs its targeted length with probability $0.43$, and is launched and is extended beyond its targeted length with probability $0.29$. What is the probability that the advertising campaign is launched?
+\end{description}
+
+\vspace{1em}
+
+% ==========================================
+% SECTION 1.3: COMBINATIONS OF EVENTS
+% ==========================================
+
+\begin{align*}
+P(D) &= P((G, P)) + P((P, P)) + P((P, G)) + P((P, S)) \\
+     &= 0.124 + 0.140 + 0.102 + 0.157 = 0.523
+\end{align*}
+
+\vspace{0.5em}
+\noindent\textcolor{myblue}{$\blacksquare$}\;\textbf{\large 1.3.5 \quad Problems}
+\vspace{-0.5em}
+\hrulefill
+\vspace{0.8em}
+
+\begin{description}[font=\bfseries, labelindent=0pt, leftmargin=3.5em]
+    \item[1.3.1] Consider the sample space $S = \{0, 1, 2\}$ and the event $A = \{0\}$. Explain why $A \neq \emptyset$.
+
+    \item[1.3.2] Consider the sample space and events in Figure 1.55. Calculate the probabilities of the events:
+    \begin{multicols}{2}
+    \begin{itemize}[label=]
+        \item[(a)] $B$
+        \item[(b)] $B \cap C$
+        \item[(c)] $A \cup C$
+        \item[(d)] $A \cap B \cap C$
+        \item[(e)] $A \cup B \cup C$
+        \item[(f)] $A' \cap B$
+        \item[(g)] $B' \cup C$
+        \item[(h)] $A \cup (B \cap C)$
+        \item[(i)] $(A \cup B) \cap C$
+        \item[(j)] $(A' \cup C)'$
+    \end{itemize}
+    \end{multicols}
+    \textit{(This problem is continued in Problem 1.4.1.)}
+
+    \item[1.3.4] Let $A$ be the event that a person is \textit{female}, let $B$ be the event that a person has \textit{black hair}, and let $C$ be the event that a person has \textit{brown eyes}. Describe the kinds of people in the following events:
+    \begin{multicols}{2}
+    \begin{itemize}[label=]
+        \item[(a)] $A \cap B$
+        \item[(b)] $A \cup C$
+        \item[(c)] $A' \cap B \cap C$
+        \item[(d)] $A \cap (B \cup C)$
+    \end{itemize}
+    \end{multicols}
+
+    \item[1.3.5] A card is chosen from a pack of cards. Are the events that a card from one of the two red suits is chosen and that a card from one of the two black suits is chosen mutually exclusive?  What about the events that an ace is chosen
+and that a heart is chosen?
+    \item[1.3.6]If $P(A) = 0.4$ and $P(A \cap B) = 0.3$, what are the possible values for $P(B)$?
+\end{description}
+
+\begin{enumerate}
+     \item[\textbf{1.3.7}] If $P(A) = 0.5$, $P(A \cap B) = 0.1$, and $P(A \cup B) = 0.8$, what is $P(B)$?
+ 
+     \item[\textbf{1.3.8}] An evaluation of a small business by an accounting firm either reveals a problem with the accounts or it doesn't reveal a problem. Also, the evaluation is either done accurately or incorrectly. The probability that the evaluation is done accurately is 0.85. Furthermore, the probability that the evaluation is done incorrectly and that it reveals a problem is 0.10. If the probability that the evaluation is done accurately and it does not reveal a problem is 0.25, what is the probability that the evaluation does not reveal a problem?
+    \begin{quote}
+        A. 0.10 \quad B. 0.20 \quad C. 0.30 \quad D. 0.40
+    \end{quote}
+
+    \item[\textbf{1.3.9}] A card is drawn at random from a pack of cards. $A$ is the event that a heart is obtained, $B$ is the event that a club is obtained, and $C$ is the event that a diamond is obtained. Are these three events mutually exclusive? What is $P(A \cup B \cup C)$? Explain why $B \subset A'$.
+
+    \item[\textbf{1.3.10}] A card is drawn from a pack of cards. $A$ is the event that an ace is obtained, $B$ is the event that a card from one of the two red suits is obtained, and $C$ is the event that a picture card is obtained. What cards do the following events consist of?
+    \begin{enumerate}
+        \item[(a)] $A \cap B$
+        \item[(b)] $A \cup C$
+        \item[(c)] $B \cap C'$
+        \item[(d)] $(A \cup B \cup C)'$
+    \end{enumerate}
+
+    \item[\textbf{1.3.11}] A car repair can be performed either on time or late and either satisfactorily or unsatisfactorily. The probability of a repair being on time and satisfactory is 0.26. The probability of a repair being on time is 0.74. The probability of a repair being satisfactory is 0.41. What is the probability of a repair being late and unsatisfactory?
+
+    \item[\textbf{1.3.12}] A bag contains 200 balls that are either red or blue and either dull or shiny. There are 55 shiny red balls, 91 shiny balls, and 79 red balls. If a ball is chosen at random, what is the probability that it is either a shiny ball or a red ball? What is the probability that it is a dull blue ball?
+
+    \item[\textbf{1.3.13}] In a study of patients arriving at a hospital emergency room, the gender of the patients is considered, together with whether the patients are younger or older than 30 years of age, and whether or not the patients are admitted to the hospital. It is found that 45\% of the patients are male, 30\% of the patients are younger than 30 years of age, 15\% of the patients are females older than 30 years of age who are admitted to the hospital, and 21\% of the patients are females younger than 30 years of age. What proportion of the patients are females older than 30 years of age who are not admitted to the hospital?
+
+    \item[\textbf{1.3.14}] Recall that a company's revenue is considerably below expectation with probability 0.08, is slightly below expectation with probability 0.19, exactly meets expectation with probability 0.26, is slightly above expectation with probability 0.36, and is considerably above expectation with probability 0.11. Let $A$ be the event that the revenue is not below expectation. Let $B$ be the event that the revenue is not above expectation. What is the probability of the intersection of these two events? What is the probability of the union of these two events?
+
+    \item[\textbf{1.3.15}] Recall that an advertising campaign is canceled before launch with probability 0.10, is launched but canceled early with probability 0.18, is launched and runs its targeted length with probability 0.43, and is extended beyond its targeted length with probability 0.29. Let $A$ be the event that the advertising campaign is launched. Let $B$ be the event that the advertising campaign is launched and runs at least as long as targeted. What is the probability of the intersection of these two events? What is the probability of the union of these two events?
+\end{enumerate}
+\begin{enumerate}
+    \item[\textbf{1.4.1}] Consider again Figure 1.55 and calculate the probabilities:
+    \begin{enumerate}
+        \item[(a)] $P(A \mid B)$
+        \item[(b)] $P(C \mid A)$
+        \item[(c)] $P(B \mid A \cap B)$
+        \item[(d)] $P(B \mid A \cup B)$
+        \item[(e)] $P(A \mid A \cup B \cup C)$
+        \item[(f)] $P(A \cap B \mid A \cup B)$
+    \end{enumerate}
+
+    \item[\textbf{1.4.2}] When a company receives an order, there is a probability of $0.42$ that its value is over $\$1000$. If an order is valued at over $\$1000$, then there is a probability of $0.63$ that the customer will pay with a credit card.
+    \begin{enumerate}
+        \item[(a)] What is the probability that the next three independent orders will each be valued at over $\$1000$?
+        \item[(b)] What is the probability that the next order will be valued at over $\$1000$ but will not be paid with a credit card?
+    \end{enumerate}
+
+    \item[\textbf{1.4.3}] A card is drawn at random from a pack of cards. Calculate:
+    \begin{enumerate}
+        \item[(a)] $P(\text{A}\heartsuit \mid \text{card from red suit})$
+        \item[(b)] $P(\text{heart} \mid \text{card from red suit})$
+        \item[(c)] $P(\text{card from red suit} \mid \text{heart})$
+        \item[(d)] $P(\text{heart} \mid \text{card from black suit})$
+        \item[(e)] $P(\text{king} \mid \text{card from red suit})$
+        \item[(f)] $P(\text{king} \mid \text{red picture card})$
+    \end{enumerate}
+
+    \item[\textbf{1.4.4}] If $A \subset B$ and $B' \neq \emptyset$, is $P(A)$ larger or smaller than $P(A \mid B)$? Provide some intuitive reasoning for your answer.
+
+    \item[\textbf{1.4.5}] A ball is chosen at random from a bag containing $190$ balls that are either red or blue and either dull or shiny. There are $36$ red shiny balls and $54$ blue balls. What is the probability of the chosen ball being shiny conditional on it being red? What is the probability of the chosen ball being dull conditional on it being red?
+
+    \item[\textbf{1.4.6}] A car repair is either on time or late and either satisfactory or unsatisfactory. If a repair is made on time, then there is a probability of $0.85$ that it is satisfactory. There is a probability of $0.77$ that a repair will be made on time. What is the probability that a repair is made on time and is satisfactory?
+
+    \item[\textbf{1.4.7}] Assess whether the probabilities of the events (i) increase, decrease, or remain unchanged when they are conditioned on the events (ii).
+    \begin{enumerate}
+        \item[(a)] (i) It rains tomorrow, (ii) it is raining today.
+        \item[(b)] (i) A lottery winner has black hair, (ii) the lottery winner has brown eyes.
+        \item[(c)] (i) A lottery winner has black hair, (ii) the lottery winner owns a red car.
+        \item[(d)] (i) A lottery winner is more than 50 years old, (ii) the lottery winner is more than 30 years old.
+    \end{enumerate}
+
+    \item[\textbf{1.4.8}] Suppose that births are equally likely to be on any day. What is the probability that somebody chosen at random has a birthday on the \textit{first day} of a month? How does this probability change conditional on the knowledge that the person's birthday is in March? In February?
+\end{enumerate}
+\begin{description}[font=\bfseries]
+
+  \item[1.4.9] Consider again Figure 1.24 and the battery lifetimes. Calculate the probabilities:
+  \begin{enumerate}[label=(\alph*)]
+    \item A type I battery lasts longest conditional on it not failing first.
+    \item A type I battery lasts longest conditional on a type II battery failing first.
+    \item A type I battery lasts longest conditional on a type II battery lasting the longest.
+    \item A type I battery lasts longest conditional on a type II battery not failing first.
+  \end{enumerate}
+
+  \item[1.4.10] Consider again Figure 1.25 and the two assembly lines. Calculate the probabilities:
+  \begin{enumerate}[label=(\alph*)]
+    \item Both lines are at full capacity conditional on neither line being shut down.
+    \item At least one line is at full capacity conditional on neither line being shut down.
+    \item One line is at full capacity conditional on exactly one line being shut down.
+    \item Neither line is at full capacity conditional on at least one line operating at partial capacity.
+  \end{enumerate}
+
+  \item[1.4.11] The length, width, and height of a manufactured part are classified as being either within or outside specified tolerance limits. In a quality inspection 86\% of the parts```latex
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+\begin{document}
+
+\subsection*{Section 1.4: Conditional Probability}
+
+\paragraph{Problem 1.4.9} %
+Referring to the battery lifespan data from Figure~1.24, calculate the following conditional probabilities:
+\begin{enumerate}[label=(\alph*)]
+    \item A Type~I battery has the longest lifespan given that it does not fail first. %
+    \item A Type~I battery has the longest lifespan given that a Type~II battery fails first. %
+    \item A Type~I battery has the longest lifespan given that a Type~II battery has the longest lifespan. %
+    \item A Type~I battery has the longest lifespan given that a Type~II battery does not fail first. %
+\end{enumerate}
+
+\paragraph{Problem 1.4.10} %
+Referring to the two assembly lines in Figure~1.25, calculate the following probabilities:
+\begin{enumerate}[label=(\alph*)]
+    \item Both lines operate at full capacity given that neither line is shut down. %
+    \item At least one line operates at full capacity given that neither line is shut down. %
+    \item Exactly one line operates at full capacity given that one line is shut down. %
+    \item Neither line operates at full capacity given that at least one line is running at full capacity. %
+\end{enumerate}
+
+\paragraph{Problem 1.4.11} %
+The length, width, and height of manufactured components are evaluated against tolerance limits. Inspection results reveal:
+\begin{itemize}
+    \item $86\%$ of components meet the width tolerance limit.
+    \item $80\%$ of components meet tolerances across all three dimensions.
+    \item $2\%$ satisfy tolerances for width and length but fail height.
+    \item $92\%$ meet the tolerance for width, height, or both.
+\end{itemize}
+\begin{enumerate}[label=(\alph*)]
+    \item Given that a component meets the height tolerance, find the probability that it also meets the width tolerance.
+    \item Given that a component satisfies tolerances for length and width, find the probability that it satisfies tolerances for all three dimensions.
+\end{enumerate}
+
+\paragraph{Problem 1.4.12} %
+A gene is classified as either Type~$A$ or Type~$B$, and as either dominant or recessive. Given that a gene is Type~$B$, the probability it is dominant is $0.31$. The probability that a gene is both Type~$B$ and dominant is $0.22$. Determine the probability that a gene is Type~$A$.
+
+\paragraph{Problem 1.4.13} %
+A manufactured component is graded as pass or fail on three attributes: performance, appearance, and cost. The observed probabilities are:
+\begin{itemize}
+    
+\end{itemize}
+\begin{enumerate}[label=(\alph*)]
+    \item What is the probability that a component passes on cost but fails on performance and appearance? %
+    \item Given that a component passes on both appearance and cost, what is the probability that it passes on all three characteristics? %
+\end{enumerate}
+
+\paragraph{Problem 1.4.14} %
+An agricultural facility grades vegetables as good or bad on taste, size, and appearance. The reported proportions are:
+\begin{itemize}
+    \item $78\%$ have good taste.
+    \item $69\%$ have both good taste and good size.
+    \item $5\%$ have good taste and good appearance, but bad size.
+    \item $84\%$ have either good size or good appearance.
+\end{itemize}
+\begin{enumerate}[label=(\alph*)]
+    \item If a vegetable has good taste, what is the probability it also has good size? %
+    \item If a vegetable has both bad size and bad appearance, what is the probability it has good taste? %
+\end{enumerate}
+\subsection*{Exercise 1.4.15}
+A commercial flight has a $4\%$ probability of experiencing technical issues that cause a delay. If no technical issues occur, there is still a $33\%$ probability of delay due to other factors. Determine the overall probability that the flight is delayed.
+
+\subsection*{Exercise 1.4.16}
+In a reliability test, a microchip has a $42\%$ chance of surviving beyond $500$ temperature cycles. Among chips that do not survive past $500$ cycles, $73\%$ are produced by Manufacturer A. Find the probability that a randomly selected chip is not produced by Manufacturer A and fails to survive $500$ cycles.
+
+\subsection*{Exercise 1.4.17}
+A company's quarterly revenue has the following outcome probabilities:
+\begin{itemize}
+    \item Significantly below expectation: $0.08$
+    \item Slightly below expectation: $0.19$
+    \item Exactly meets expectation: $0.26$
+    \item Slightly above expectation: $0.36$
+    \item Significantly above expectation: $0.11$
+\end{itemize}
+Given that the revenue is not below expectation, calculate the conditional probability that it exactly meets expectation.
+
+\subsection*{Exercise 1.4.18}
+An ad campaign has four possible outcomes:
+\begin{itemize}
+    \item Canceled prior to launch: $0.10$
+    \item Launched but ended prematurely: $0.18$
+    \item Launched and completes its planned duration: $0.43$
+    \item Launched and extended beyond its planned duration: $0.29$
+\end{itemize}
+If the campaign is launched, what is the probability that it runs for at least its planned duration?
+\subsection*{Problem 1.5.1}
+Two cards are chosen from a pack of cards \textit{without replacement}. Calculate the probabilities:
+\begin{enumerate}[label=(\alph*)]
+    \item Both are picture cards.
+    \item Both are from red suits.
+    \item One card is from a red suit and one card is from a black suit.
+\end{enumerate}
+
+\subsection*{Problem 1.5.2}
+Repeat Problem 1.5.1, except that the second drawing is made \textit{with replacement}. Compare your answers with those from Problem 1.5.1.
+
+\subsection*{Problem 1.5.3}
+Two cards are chosen from a pack of cards \textit{without replacement}. Are the following events independent?
+\begin{enumerate}[label=(\alph*)]
+    \item (i) The first card is a picture card, (ii) the second card is a picture card.
+    \item (i) The first card is a heart, (ii) the second card is a picture card.
+    \item (i) The first card is from a red suit, (ii) the second card is from a red suit.
+    \item (i) The first card is a picture card, (ii) the second card is from a red suit.
+    \item (i) The first card is a red picture card, (ii) the second card is a heart.
+\end{enumerate}
+
+\subsection*{Problem 1.5.4}
+Four cards are chosen from a pack of cards \textit{without replacement}. What is the probability that all four cards are hearts? What is the probability that all four cards are from red suits? What is the probability that all four cards are from different suits?
+\begin{enumerate}
+  \item[\textbf{1.5.5}] Repeat Problem 1.5.4, except that the drawings are made with replacement. Compare your answers with those from Problem 1.5.4.
+
+  \item[\textbf{1.5.6}] Show that the events $A$ and $B$ are independent events if and only if:
+  \begin{enumerate}[(a)]
+      \item $A$ and $B'$
+      \item $A'$ and $B$
+      \item $A'$ and $B'$
+  \end{enumerate}
+  are independent events.
+
+  \item[\textbf{1.5.7}] Consider the network given in Figure 1.60 with 5 switches. Suppose that the switches operate independently of each other and that switch 1 allows a message through with probability 0.80, switch 2 allows a message through with probability 0.85, switch 3 allows a message through with probability 0.90, switch 4 allows a message through with probability 0.85, and switch 5 allows a message through with probability 0.90. What is the probability that a message sent will pass through the network?
+
+  \item[\textbf{1.5.8}] Suppose that birthdays are equally likely to be on any day of the year (ignore February 29 as a possibility). Show that the probability that in a group of $n$ people, no two share the same birthday is
+  \[
+  P(n) = \frac{365}{365} \times \frac{364}{365} \times \dots \times \frac{365 - n + 1}{365}
+  \]
+  What size group is needed so that the probability that two people will share the same birthday is greater than 0.5? (\textit{Hint:} Compute $P(n)$ for $n = 22$ and $n = 23$. Show that for $n = 23$ the probability is larger than a half.) Do you think birthdays are equally likely to be every day of the year?
+
+  \item[\textbf{1.5.9}] Suppose that 17 lightbulbs in a box of 100 lightbulbs are defective. 10 lightbulbs are selected at random without replacement. What is the probability that there will be no defective lightbulbs in the sample? What is the probability that there will be at most 2 defective lightbulbs in the sample?
+
+  \item[\textbf{1.5.10}] Repeat Problem 1.5.9, except that the drawings are made with replacement. Compare your answers with those from Problem 1.5.9.
+
+  \item[\textbf{1.5.11}] Suppose that a bag contains 15 red balls, 10 blue balls, and 12 green balls, and that 2 balls are chosen at random without replacement. What is the probability that 2 green balls will be drawn? What is the probability that the 2 balls drawn will have different colors?
+
+  \item[\textbf{1.5.12}] Repeat Problem 1.5.11, except that drawings are made with replacement. Compare your answers with those from Problem 1.5.11.
+
+  \item[\textbf{1.5.13}] A biased coin has a probability $p$ of resulting in a head. If two independent tosses are made, what value of $p$ maximizes the probability that the same result is obtained on both tosses?
+
+  \item[\textbf{1.5.14}] If the coin is tossed $n$ times, what is the probability that heads is obtained exactly $x$ times? If a fair coin is tossed seven times, what is the probability that it is not heads on all 7 tosses?
+
+  \item[\textbf{1.5.15}] 
+  \begin{enumerate}[(a)]
+      \item If a fair die is rolled five times, what is the probability that the numbers obtained are all even numbers?
+      \item If a die is rolled six times, what is the probability that the six numbers obtained are all different?
+      \item If three cards are taken at random from a pack of cards with replacement, what is the probability that there are two black cards and one red card?
+      \item If three cards are taken at random from a pack of cards without replacement, what is the probability that there are two black cards and one red card?
+  \end{enumerate}
+
+  \item[\textbf{1.5.16}] Suppose that a system has $n$ components, each of which operates independently with probability $p = 0.85$. How large must $n$ be so that the system reliability is at least $0.995$ (that at least one component operates correctly)?
+
+  \item[\textbf{1.5.17}] Suppose that an insurance company wishes to check the validity of $n$ claims submitted by policyholders. Assuming independence of each claim, if $p$ is the probability that a claim is fraudulent, what is the probability that at least one fraudulent claim is found?
+
+  \item[\textbf{1.5.18}] A system has two computers. Computer 1 works with a probability of $0.85$, and Computer 2 works with a probability of $0.92$. Suppose that the operations of the two computers are independent.
+  \begin{enumerate}[(a)]
+      \item Suppose that the system works only when both computers are working. What is the probability that the system works?
+      \item Suppose that the system works when at least one computer is working. What is the probability that the system works?
+      \item Suppose that the system works when at least one computer is working. What is the probability that the system fails?
+  \end{enumerate}
+
+  \item[\textbf{1.5.19}] Suppose that there are two companies such that for each company the trial is a success/failure independently with probability $p$. Company A's trial is successful with probability $0.10$, while Company B's trial is successful with probability $0.15$. Furthermore, suppose that the two companies operate independently. What is the probability that Company A has a success before Company B?
+
+  \item[\textbf{1.5.20}] Consider two advertising campaigns where for each one a target audience is reached with probability $p$. It is estimated that Campaign 1 reaches the target audience with probability $0.10$, and Campaign 2 reaches the target audience with probability $0.15$. If the advertising campaigns are independent, what is the probability that the target audience is reached by at least one campaign?
+\end{enumerate}
+\paragraph{1.6.1} Suppose it is known that $1\%$ of the population suffers from a particular disease. A blood test has a $97\%$ chance of identifying the disease for diseased individuals, but also has a $6\%$ chance of falsely indicating that a healthy person has the disease.
+\begin{enumerate}
+    \item[(a)] What is the probability that a person will have a positive blood test?
+    \item[(b)] If your blood test is positive, what is the chance that you have the disease?
+    \item[(c)] If your blood test is negative, what is the chance that you do not have the disease?
+\end{enumerate}
+
+\paragraph{1.6.2} Bag A contains $2$ red balls and $3$ blue balls. Bag B contains $4$ red balls and $4$ blue balls. Bag C contains $3$ red balls and $3$ blue balls. A bag is chosen at random, with each bag being equally likely to be chosen, and then a ball is chosen at random from that bag. Calculate the probabilities:
+\begin{enumerate}
+    \item[(a)] A red ball is chosen.
+    \item[(b)] A blue ball is chosen.
+\end{enumerate}
+It is known that a red ball is chosen; what is the probability that it came from bag A? It is also known that a blue ball is chosen; what is the probability that it came from bag B?
+
+\paragraph{1.6.3} A class has two sections. Section I has $55$ students of whom $10$ received A grades. Section II has $45$ students of whom $15$ received A grades. Now $1$ of the $100$ students is chosen at random, with each being equally likely to be chosen.
+\begin{enumerate}
+    \item[(a)] What is the probability that the student was in section I?
+    \item[(b)] What is the probability that the student received an A grade?
+    \item[(c)] What is the probability that the student received an A grade if the student is known to have been in section I?
+    \item[(d)] What is the probability that the student was in section I if the student is known to have received an A grade?
+\end{enumerate}
+
+\paragraph{1.6.4} A region has three species of bird. Species 1 accounts for $42\%$ of the birds, of which $10\%$ have been tagged. Species 2 accounts for $20\%$ of the birds, of which $15\%$ have been tagged. Species 3 accounts for $38\%$ of the birds, of which $19\%$ have been tagged. A tagged bird is observed; what are the probabilities that it is of species 1, of species 2, and of species 3?
+
+\paragraph{1.6.5} After production, an electronic circuit is given a quality score of A, B, C, or D. Over a certain period of time, $25\%$ of the circuits were given a quality score A, $12\%$ were given a quality score B, $56\%$ were given a quality score C, and $7\%$ were given a quality score D. It was found that $3\%$ of the circuits given a quality score A eventually failed, and the failure rate was $10\%$ for circuits given a quality score B, $18\%$ for circuits given a quality score C, and $25\%$ for circuits given a quality score D.
+\begin{enumerate}
+    \item[(a)] If a circuit fails, what is the probability that it was given a quality score of either C or D?
+    \item[(b)] If a circuit does not fail, what is the probability that it was given a quality score A?
+\end{enumerate}
+
+\paragraph{1.6.6} The weather on a particular day is classified as either cold, warm, or hot. There is a probability of $0.15$ that it is cold and a probability of $0.20$ that it is hot. In addition, on a cold day it is either rain or no rain. On cold days there is a probability of $0.30$ that it will rain, on warm days there is a probability of $0.40$ that it will rain, and on hot days there is a probability of $0.50$ that it will rain. If it is raining on a particular day, what is the probability that it is cold?
+
+\paragraph{1.6.7} A valve can be used at four temperature levels. If the valve is used at a cold temperature, then there is a probability of $0.003$ that it will leak. If the valve is used at a medium temperature, then there is a probability of $0.009$ that it will leak. If the valve is used at a warm temperature, then there is a probability of $0.014$ that it will leak. If the valve is used at a hot temperature, then there is a probability of $0.018$ that it will leak. Under standard operating conditions, the valve is used at a cold temperature $12\%$ of the time, at a medium temperature $55\%$ of the time, at a warm temperature $20\%$ of the time, and at a hot temperature $13\%$ of the time.
+\begin{enumerate}
+    \item[(a)] If the valve leaks, what is the probability that it is being used at the hot temperature?
+    \item[(b)] If the valve does not leak, what is the probability that it is being used at the medium temperature?
+\end{enumerate}
+
+\paragraph{1.6.8} A company with five types of wheelchairs, with type A being $12\%$ of the sales, type B being $16\%$ of the sales, type C being $7\%$ of the sales, type D being $28\%$ of the sales, and type E being $37\%$ of the sales. In addition, $9\%$ of the type A wheelchair sales are motorized, $5\%$ of the type B wheelchair sales are motorized, $4\%$ of the type C wheelchair sales are motorized, $42\%$ of the type D wheelchair sales are motorized, and $78\%$ of the type E wheelchair sales are motorized.
+\begin{enumerate}
+    \item[(a)] If a motorized wheelchair is sold, what is the probability that it is of type C?
+    \item[(b)] If a nonmotorized wheelchair is sold, what is the probability that it is of type D?
+\end{enumerate}
+
+\paragraph{1.6.9} A company's revenue is considerably below expectation with probability $0.08$, in which case there is a probability of $0.02$ that the CEO receives a bonus; is slightly below expectation with probability $0.18$, in which case there is a probability of $0.14$ that the CEO receives a bonus; meets expectation with probability $0.26$, in which case there is a probability of $0.60$ that the CEO receives a bonus; is slightly above expectation with probability $0.35$, in which case there is a probability of $0.77$ that the CEO receives a bonus; and is considerably above expectation with probability $0.13$, in which case there is a probability of $0.99$ that the CEO receives a bonus.
+\begin{enumerate}
+    \item[(a)] What is the probability that the CEO receives a bonus?
+    \item[(b)] If the CEO receives a bonus, what is the probability that the company has a revenue below expectation?
+\end{enumerate}
+
+\paragraph{1.6.10} An advertising campaign is canceled before launch with probability $0.10$, in which case the marketing company is fired with probability $0.54$; is launched, but canceled early with probability $0.35$, in which case the marketing company is fired with probability $0.45$; is launched and runs its full length with probability $0.55$, in which case the marketing company is fired with probability $0.16$.
+\begin{enumerate}
+    \item[(a)] What is the probability that the marketing company is fired?
+    \item[(b)] If the marketing company is fired, what is the probability that the advertising campaign was canceled before launch?
+\end{enumerate}
+\begin{enumerate}
+    \item[\textbf{1.7.1}] Evaluate:
+    \begin{enumerate}
+        \item $C_3^6$
+        \item $C_4^{12}$
+        \item $P_3^6$
+        \item $P_4^{12}$
+    \end{enumerate}
+
+    \item[\textbf{1.7.2}] Evaluate:
+    \begin{enumerate}
+        \item $C_0^6$
+        \item $C_6^6$
+        \item $P_0^6$
+        \item $P_6^6$
+    \end{enumerate}
+
+    \item[\textbf{1.7.3}] Evaluate:
+    \begin{enumerate}
+        \item $C_0^n$
+        \item $C_n^n$
+        \item $P_0^n$
+        \item $P_n^n$
+    \end{enumerate}
+
+    \item[\textbf{1.7.4}] A menu has five appetizers, three soups, seven main courses, six side dishes, and eight desserts. How many ways can a full meal be chosen? In how many ways can a meal be chosen if either an appetizer or a soup is omitted, but not both?
+
+    \item[\textbf{1.7.5}] In an experiment to test yarn strength, three different yarns, four different furnace temperatures, and two different cooling methods are to be considered. Altogether, how many experimental configurations are possible?
+
+    \item[\textbf{1.7.6}] Four players compete in a tournament and are ranked from 1 to 4. They then compete in a second tournament and are again ranked from 1 to 4. Suppose that their performances in the second tournament are unrelated to their performances in the first tournament, so that the two sets of rankings are independent.
+    \begin{enumerate}
+        \item What is the probability that both comparisons result in an identical ranking for all four competitors?
+        \item What is the probability that nobody receives the same ranking twice?
+    \end{enumerate}
+
+    \item[\textbf{1.7.7}] Twenty players compete in a tournament. In how many ways can rankings be assigned to the top two competitors? In how many ways can the top two competitors be chosen (without being in any order)?
+
+    \item[\textbf{1.7.8}] There are 15 broken lightbulbs in a box of 100 lightbulbs. A random sample of 3 lightbulbs is chosen, without replacement.
+    \begin{enumerate}
+        \item How many ways are there to choose the sample?
+        \item How many samples contain no broken lightbulbs?
+        \item What is the probability that the sample contains no broken lightbulbs?
+        \item How many samples contain Paisley 1 broken lightbulb?
+        \item What is the probability that the sample contains no more than 1 broken lightbulb?
+    \end{enumerate}
+
+    \item[\textbf{1.7.9}] Show that $C_2^n = C_2^{n-1} + n - 1$. Can you give an intuitive explanation for this equality?
+
+    \item[\textbf{1.7.10}] A poker hand consists of five cards chosen at random from a pack of cards.
+    \begin{enumerate}
+        \item How many different hands are there?
+        \item How many hands consist of all hearts?
+        \item How many hands consist of cards all from the same suit---a ``flush''?
+        \item What is the probability of being dealt a flush?
+        \item How many hands contain all four aces?
+        \item How many hands contain four cards of the same number or picture?
+        \item What is the probability of being dealt a hand containing four cards of the same number or picture?
+    \end{enumerate}
+
+    \item[\textbf{1.7.11}] In an arrangement of $n$ objects in a circle, an object's position relative to other objects is important, but an object's place in the circle is not important. Thus, rotations of a given arrangement are considered to be the same arrangement. Explain why the number of different arrangements is $(n - 1)!$.
+
+    \item[\textbf{1.7.12}] In how many ways can six people sit in six seats in a line in a cinema? In how many ways can the six people sit around a circular table eating dinner after the movie?
+
+    \item[\textbf{1.7.13}] Repeat Problem 1.7.12 with the condition that one of the six people, Andrea, must sit next to Scott. In how many ways can the seating arrangements be made if Andrea refuses to sit next to Scott?
+
+    \item[\textbf{1.7.14}] A total of $n$ balls are to be put into $k$ boxes with the conditions that there will be $n_1$ balls in box 1, $n_2$ balls in box 2, and so on, with $n_k$ balls being placed in box $k$ ($n_1 + n_2 + \cdots + n_k = n$). Explain why the number of ways of doing this is
+    \[
+    \frac{n!}{n_1! n_2! \cdots n_k!}
+    \]
+    Explain why this is just $C_r^n = C_{n-r}^n$ when $k = 2$.
+
+    \item[\textbf{1.7.15}] Explain why the following two problems are identical and solve them:
+    \begin{enumerate}
+        \item In how many ways can 12 balls be placed in 3 boxes when the first box can hold 3 balls, the second box can hold 4 balls, and the third box can hold 5 balls?
+        \item In how many ways can 3 red balls, 4 blue balls, and 5 green balls be placed in a straight line?
+    \end{enumerate}
+    (See Problem 1.7.14.)
+
+    \item[\textbf{1.7.16}] A garage employs 14 mechanics, of whom 3 are needed on one job, 4 on a second job, and 7 on a third job. In how many ways can the mechanics be assigned? (See Problem 1.7.14.)
+\end{enumerate}
+\begin{description}
+
+\item[1.7.17] A company has 15 applicants to interview, and 3 are to be invited on each day of the working week. In how many ways can the applicants be scheduled?\\
+\textit{(See Problem 1.7.14)}[cite: 1]
+
+\item[1.7.18] A quality inspector selects a sample of 12 items at random from a collection of 60 items, of which 18 have excellent quality, 25 have good quality, 12 have poor quality, and 5 are defective.[cite: 1]
+\begin{enumerate}[label=(\alph*)]
+    \item What is the probability that the sample only contains items that have either excellent or good quality?[cite: 1]
+    \item What is the probability that the sample contains three items of excellent quality, three items of good quality, three items of poor quality, and three defective items?[cite: 1]
+\end{enumerate}
+
+\item[1.7.19] A salesman has to visit ten different cities. In how many different ways can the ordering of the visits be made? If he decides that five of the visits will be made one week, and the other five visits will be made the following week, in how many different ways can the ten cities be split into two groups of five cities?[cite: 1]
+
+\item[1.7.20] Suppose that 5 cards are taken without replacement from a deck of 52 cards. How many ways are there to do so such that there are 2 red cards and 3 black cards?[cite: 1]
+
+\item[1.7.21] A hand of 5 cards is chosen at random from an ordinary deck of 52 playing cards without replacement.[cite: 1]
+\begin{enumerate}[label=(\alph*)]
+    \item What is the probability that the hand does not have any hearts?[cite: 1]
+    \item What is the probability that the hand consists of two hearts, two diamonds, two clubs, and two spades?[cite: 1]
+\end{enumerate}
+
+\item[1.7.22] A box contains 40 batteries, 5 of which have low lifetimes, 30 of which have average lifetimes, and 5 of which have high lifetimes. A consumer requires 8 batteries to run an appliance and randomly selects them all from the box. What is the probability that among the 8 batteries fitted into the consumer's appliance, there are exactly 2 low, 4 average, and 2 high lifetime batteries?[cite: 1]
+
+\item[1.7.23] In each of 3 years a company's revenue is classified as being either considerably below expectation, slightly below expectation, exactly meeting expectation, slightly above expectation, or considerably above expectation. How many different sequences of revenue results are possible?[cite: 1]
+
+\item[1.7.24] A marketing company is hired to manage four advertising campaigns sequentially, one after the other. Each advertising campaign may be canceled before launch, canceled but launched early, launched and meets its targeted length, or launched and extended beyond its targeted length. How many different sequences of campaign results are possible?[cite: 1]
+
+\end{description}
+\begin{enumerate}
+    \item[\textbf{1.10.1}] What is the sample space for the average score of two dice?
+
+    \item[\textbf{1.10.2}] What is the sample space when a winner and a runner-up are chosen in a tournament with four contestants?
+
+    \item[\textbf{1.10.3}] A biased coin is known to have a greater probability of recording a head than a tail. How can it be used to determine fairly which team in a football game has the choice of kick-off?
+
+    \item[\textbf{1.10.4}] If two fair dice are thrown, what is the probability that their two scores differ by no more than one?
+
+    \item[\textbf{1.10.5}] If a card is chosen at random from a pack of cards, what is the probability of choosing a diamond picture card?
+
+    \item[\textbf{1.10.6}] Two cards are drawn from a pack of cards. Is it more likely that two hearts will be drawn when the drawing is with replacement or without replacement?
+
+    \item[\textbf{1.10.7}] Two fair dice are thrown. $A$ is the event that the sum of the scores is no larger than four, and $B$ is the event that the two scores are identical. Calculate the probabilities:
+    \begin{enumerate}
+        \item[(a)] $A \cap B$
+        \item[(b)] $A \cup B$
+        \item[(c)] $A' \cap B$
+    \end{enumerate}
+
+    \item[\textbf{1.10.8}] Two fair dice are thrown, one red and one blue. Calculate:
+    \begin{enumerate}
+        \item[(a)] $P(\text{red die is } 5 \mid \text{sum of scores is } 8)$
+        \item[(b)] $P(\text{either die is } 5 \mid \text{sum of scores is } 8)$
+        \item[(c)] $P(\text{sum of scores is } 8 \mid \text{either die is } 5)$
+    \end{enumerate}
+
+    \item[\textbf{1.10.9}] Consider the network shown in Figure 1.75 with five switches. Suppose that the switches operate independently and that each switch allows a message through with probability of $0.85$. What is the probability that a message will find a route through the network?
+
+    \item[\textbf{1.10.10}] Which is more likely: obtaining at least one head in two tosses of a fair coin, or at least two heads in four tosses of a fair coin?
+\end{enumerate}
+\subsection*{Problem 1.10.11}
+Bag 1 contains 6 red balls, 7 blue balls, and 3 green balls. Bag 2 contains 8 red balls, 8 blue balls, and 2 green balls. Bag 3 contains 2 red balls, 9 blue balls, and 8 green balls. Bag 4 contains 4 red balls, 7 blue balls, and 0 green balls. A bag is selected with probabilities 0.15, 0.20, 0.35, and 0.30 for Bags 1 through 4, respectively, after which a single ball is chosen at random from that bag. Calculate the following probabilities:
+\begin{enumerate}[(a)]
+    \item A blue ball is selected.
+    \item Bag 4 was chosen, given that the selected ball is green.
+    \item Bag 1 was chosen, given that the selected ball is white.
+\end{enumerate}
+
+\subsection*{Problem 1.10.12}
+A standard fair die is rolled. If the outcome is an even number, that number is recorded as the final score. If the outcome is an odd number, a fair coin is tossed: if heads appears, the recorded score is the die's value; if tails appears, the recorded score is double the die's value.
+\begin{enumerate}[(a)]
+    \item List all possible values of the recorded score.
+    \item What is the probability that a score of 10 is recorded?
+    \item What is the probability that a score of 3 is recorded?
+    \item What is the probability that a score of 6 is recorded?
+    \item What is the probability that a score of 4 is recorded, given that the coin was tossed?
+    \item Given that a score of 6 is recorded, what is the probability that an odd number was obtained on the die?
+\end{enumerate}
+
+\subsection*{Problem 1.10.13}
+How many sequences of length 4 can be formed if each component can take 5 distinct values? How many sequences of length 5 can be formed if each component can take 4 distinct values? In general, assuming $3 \le n_1 < n_2$, are there more sequences of length $n_1$ with $n_2$ possible values per component, or sequences of length $n_2$ with $n_1$ possible values per component?
+
+\subsection*{Problem 1.10.14}
+Twenty copying tasks need to be completed. If five copy machines are available, in how many ways can five tasks be allocated to each of four machines? If an extra copy machine is introduced, in how many ways can five tasks be allocated to each of five machines?
+
+\subsection*{Problem 1.10.15}
+A bag contains two counters, each independently equally likely to be black or white. Let $X$ denote the number of white counters in the bag.
+\begin{enumerate}[(a)]
+    \item What is the probability distribution of $X$?
+    \item Suppose a white counter is added to the bag, and then one of the three counters is selected at random and removed. What is the conditional distribution of $X$ given that the removed counter is white?
+    \item What is the conditional distribution of $X$ if the removed counter is black?
+\end{enumerate}
+
+\subsection*{Problem 1.10.16}
+A company finds that 28\% of orders received are from first-time customers, while the remaining 72\% come from returning customers. Additionally, 73\% of orders from first-time customers are shipped within one day, and 30\% of all total orders come from returning customers whose orders are \textit{not} shipped within one day. If a randomly selected order is shipped within one day, what is the probability that it was placed by a first-time customer?
+\subsection*{1.10.17}
+When asked to select their favorite opera work, $26\%$ of the respondents selected a piece by Puccini, and $22\%$ of the respondents selected a piece by Verdi. Moreover, $59\%$ of the respondents who selected a piece by Puccini were female, and $45\%$ of the respondents who selected a piece by Verdi were female. Altogether, $62\%$ of the respondents were female.
+\begin{enumerate}
+    \item[(a)] If a respondent selected a piece that is by neither Puccini nor Verdi, what is the probability that the respondent is female?
+    \item[(b)] What proportion of males selected a piece by Puccini?
+\end{enumerate}
+
+\subsection*{1.10.18}
+A random sample of 10 fibers is taken from a collection of 92 fibers that consists of 43 fibers of polymer A, 17 fibers of polymer B, and 32 fibers of polymer C.
+\begin{enumerate}
+    \item[(a)] What is the probability that the sample does not contain any fibers of polymer B?
+    \item[(b)] What is the probability that the sample contains exactly one fiber of polymer B?
+    \item[(c)] What is the probability that the sample contains three fibers of polymer A, three fibers of polymer B, and four fibers of polymer C?
+\end{enumerate}
+
+\subsection*{1.10.19}
+A fair coin is tossed five times. What is the probability that there is not a sequence of three outcomes of the same kind?
+
+\subsection*{1.10.20}
+Consider telephone calls made to a company's complaint line. Let $A$ be the event that the call is answered within 10 seconds. Let $B$ be the event that the call is answered by one of the company's experienced telephone operators. Let $C$ be the event that the call lasts less than 5 minutes. Let $D$ be the event that the complaint is handled successfully by the telephone operator. Describe the following events:
+\begin{enumerate}
+    \item[(a)] $A \cap B \cap C \cap D$
+    \item[(b)] $A^c \cap B^c \cap C^c \cap D^c$
+    \item[(c)] $A \cup B \cup C \cup D$
+\end{enumerate}
+
+\subsection*{1.10.21}
+A manager has 20 different job orders, of which 7 must be assigned to production line I, 7 must be assigned to production line II, and 6 must be assigned to production line III.
+\begin{enumerate}
+    \item[(a)] In how many ways can the assignments be made?
+    \item[(b)] If the first job and the second job must be assigned to the same production line, in how many ways can the assignments be made?
+    \item[(c)] If the first job and the second job cannot be assigned to the same production line, in how many ways can the assignments be made?
+\end{enumerate}
+
+\subsection*{1.10.22}
+A hand of 5 cards (without replacement) is chosen at random from an ordinary deck of 52 playing cards.
+\begin{enumerate}
+    \item[(a)] What is the probability that the hand contains only diamonds?
+    \item[(b)] What is the probability that the hand contains one ace, one king, and one queen?
+\end{enumerate}
+
+\subsection*{1.10.23}
+A hand of 4 cards (without replacement) is chosen at random from an ordinary deck of 52 playing cards.
+\begin{enumerate}
+    \item[(a)] What is the probability that the hand does not have any aces?
+    \item[(b)] What is the probability that the hand has exactly one ace?
+\end{enumerate}
+Suppose now that the 4 cards are taken with replacement.
+\begin{enumerate}
+    \item[(c)] What is the probability that the same card is obtained four times?
+\end{enumerate}
+
+\subsection*{1.10.24}
+Are the following statements true or false?
+\begin{enumerate}
+    \item[(a)] If a fair coin is tossed three times, the probability of obtaining two heads and one tail is the same as the probability of obtaining one head and two tails.
+    \item[(b)] If a card is drawn at random from a deck of cards, the probability that it is a heart increases if it is conditioned on the knowledge that it is an ace.
+    \item[(c)] The number of ways of choosing five different letters from the alphabet is more than the number of seconds in a year.
+    \item[(d)] If two events are independent, then the probability that they both occur can be calculated by multiplying their individual probabilities.
+    \item[(e)] It is always true that $P(A \cup B) = P(A) + P(B) - 1$.
+    \item[(f)] It is always true that $P(A|B) = P(B|A)$.
+    \item[(g)] It is always true that $P(A \cap B) \le P(A)$.
+\end{enumerate}
+
+\subsection*{1.10.25}
+There is a probability of 0.55 that a soccer team will win a game. There is also a probability of 0.45 that the soccer team will not have a player sent off in the game. However, if the soccer team does not have a player sent off, then there is a probability of 0.60 that the team will win the game. What is the probability that the team has a player sent off but still wins the game?
+
+\noindent\textbf{1.10.26} A warehouse contains 350 machines. Each machine is either new or used, and each machine has either good quality or bad quality. There are 120 new machines that have bad quality. There are 230 used machines. Suppose that a machine is chosen at random, with each machine being equally likely to be chosen.
+\begin{enumerate}[label=(\alph*)]
+    \item What is the probability that the chosen machine is a new machine with good quality?
+    \item If the chosen machine is new, what is the probability that it has good quality?
+\end{enumerate}
+\begin{document}
+
+\noindent\textbf{1.10.27} A class has 250 students, 113 of whom are male, and 167 of whom are mechanical engineers. There are 52 female students who are not mechanical engineers. There are 10 female mechanical engineers who are seniors.
+\begin{enumerate}[label=(\a*)]
+    \item If a randomly chosen student is not a mechanical engineer, what is the probability that the student is a male?
+    \item If a randomly chosen student is a female mechanical engineer, what is the probability that the student is a senior?
+\end{enumerate}
+
+\vspace{0.5em}
+\noindent\textbf{1.10.28} A business tax form is either filed on time or late, is either from a small or a large business, and is either accurate or inaccurate. There is an 11\% probability that a form is from a small business and is accurate and on time. There is a 13\% probability that a form is from a small business and is accurate but is late. There is a 15\% probability that a form is from a small business and is on time. There is a 21\% probability that a form is from a small business and is inaccurate and late.
+\begin{enumerate}[label=(\a*)]
+    \item If a form is from a small business and is accurate, what is the probability that it was filed on time?
+    \item What is the probability that a form is from a large business?
+\end{enumerate}
+
+\vspace{0.5em}
+\noindent\textbf{1.10.29}
+\begin{enumerate}[label=(\a*)]
+    \item If four cards are taken at random from a pack of cards without replacement, what is the probability of having exactly two hearts?
+    \item If four cards are taken at random from a pack of cards without replacement, what is the probability of having exactly two hearts and exactly two clubs?
+    \item If four cards are taken at random from a pack of cards without replacement and it is known that there are no clubs, what is the probability that there are exactly three hearts?
+\end{enumerate}
+
+\vspace{0.5em}
+\noindent\textbf{1.10.30} Applicants have a 0.26 probability of passing a test when they take it for the first time, and if they pass it can move on to the next stage. However, if they fail the test the first time, they must take the test a second time, and when applicants take the test for the second time there is a 0.43 chance that they will pass and be allowed to move on to the next stage. Applicants are rejected if the test is failed on the second attempt.
+\begin{enumerate}[label=(\a*)]
+    \item What is the probability that an applicant moves on to the next stage but needs two attempts at the test?
+    \item What is the probability that an applicant moves on to the next stage?
+    \item If an applicant moves on to the next stage, what is the probability that he or she passed the test on the first attempt?
+\end{enumerate}
+
+\vspace{0.5em}
+\noindent\textbf{1.10.31} A fair die is rolled five times. What is the probability that the first score is strictly larger than the second score, which is strictly larger than the third score, which is strictly larger than the fourth score, which is strictly larger than the fifth score (i.e., the five scores are strictly decreasing)?
+
+\vspace{0.5em}
+\noindent\textbf{1.10.32} A software engineer makes two backup copies of his file, one on a CD and another on a flash drive. Suppose that there is a probability of 0.03\% that the file is corrupted when it is backed up onto the CD, and a probability of 0.1\% that the file is corrupted when it is backed up onto the flash drive, and that these events are independent of each other. What is the probability that the engineer will have at least one uncorrupted copy of the file?
+
+\vspace{0.5em}
+\noindent\textbf{1.10.33} A warning light in the cockpit of a plane is supposed to indicate when a hydraulic pump is inoperative. If the pump is inoperative, then there is a probability of 0.992 that the warning light will come on. However, there is a probability of 0.003 that the warning light will come on even when the pump is operating correctly. Furthermore, there is a probability of 0.996 that the pump is operating correctly. If the warning light comes on, what is the probability that the pump really is inoperative?
+
+\vspace{0.5em}
+\noindent\textbf{1.10.34} A hand of 10 cards is chosen at random without replacement from a deck of 52 cards. What is the probability that the hand contains exactly two aces, two kings, three queens, and three jacks?
+
+\vspace{0.5em}
+\noindent\textbf{1.10.35} There are 11 items of a product on a shelf in a retail outlet, and unknown to the customers, 4 of the items are overage. Suppose that a customer takes 3 items at random.
+\begin{enumerate}[label=(\a*)]
+    \item What is the probability that none of the overage products are selected by the customer?
+    \item What is the probability that exactly 2 of the items taken by the customer are overage?
+\end{enumerate}
+
+\subsection*{Problem 1.10.36}
+Among those people who are infected with a certain virus, $32\%$ have strain A, $59\%$ have strain B, and the remaining $9\%$ have strain C. Furthermore, $21\%$ of people infected with strain A of the virus exhibit symptoms, $16\%$ of people infected with strain B of the virus exhibit symptoms, and $63\%$ of people infected with strain C of the virus exhibit symptoms.
+\begin{enumerate}[(a)]
+    \item If a person has the virus and exhibits symptoms of it, what is the probability that they have strain C?
+    \item If a person has the virus but doesn't exhibit any symptoms of it, what is the probability that they have strain A?
+    \item What is the probability that a person who has the virus does not exhibit any symptoms of it?
+\end{enumerate}
+
+\subsection*{Problem 1.10.37}
+The marketing division of a company profiles its potential customers and grades them as either likely or unlikely purchasers. Overall, $16\%$ of the potential customers are graded as likely purchasers. In reality, $81\%$ of the potential customers graded as likely purchasers actually make a purchase, while only $9\%$ of the potential customers graded as unlikely purchasers actually make a purchase. If somebody made a purchase, what is the probability that they had been graded as a likely purchaser?
+\end{document}
